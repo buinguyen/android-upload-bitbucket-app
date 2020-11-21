@@ -1,0 +1,2 @@
+include ':libstext'
+rootProject.name = "testlib-bitbucket"
