@@ -8,6 +8,6 @@ pipelines:
           image: bitbucketpipelines/android-ci-image
           script:
             - echo "$SIGNING_JKS_FILE" | base64 -d > android-signing-keystore.jks
-            - ./gradlew assembleDebug
+            - ./gradlew uploadArchives
           artifacts:
-            - app/build/outputs/**
+            - libstext/build/outputs/aar/**
