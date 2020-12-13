@@ -1,5 +1,18 @@
 apply plugin: 'maven'
 
+ext.lib_ver = [
+        major: 1,
+        minor: 0,
+        patch: 4,
+]
+ext.lib_info = [
+        ARTIFACT_NAME     : "libstext",
+        ARTIFACT_PACKAGE  : "com.test.libstext",
+        ARTIFACT_PACKAGING: "aar",
+        COMPANY           : "nguyenbnt_55",
+        REPOSITORY_NAME   : "andlibtest-aar",
+]
+
 repositories {
     maven { url "https://raw.github.com/synergian/wagon-git/releases" }
 }
@@ -16,13 +29,13 @@ uploadArchives {
 
     repositories.mavenDeployer {
         configuration = configurations.deployLibrary
-        repository(url: 'git:master://git@bitbucket.org:' + COMPANY + '/' + REPOSITORY_NAME + '.git')
+        repository(url: 'git:master://git@bitbucket.org:' + lib_info.COMPANY + '/' + lib_info.REPOSITORY_NAME + '.git')
 
         pom.project {
-            groupId = ARTIFACT_PACKAGE
-            version = "${major}.${minor}.${patch}"
-            artifactId = ARTIFACT_NAME
-            packaging ARTIFACT_PACKAGING
+            groupId = lib_info.ARTIFACT_PACKAGE
+            version = "${lib_ver.major}.${lib_ver.minor}.${lib_ver.patch}"
+            artifactId = lib_info.ARTIFACT_NAME
+            packaging lib_info.ARTIFACT_PACKAGING
         }
     }
 }
