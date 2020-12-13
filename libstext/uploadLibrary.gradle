@@ -1,7 +1,6 @@
 apply plugin: 'maven'
 
 repositories {
-    //maven { url "https://bitbucket.org/nguyenbnt_55/andlibtest/addon/pipelines/deployments" }
     maven { url "https://raw.github.com/synergian/wagon-git/releases" }
 }
 
@@ -10,7 +9,6 @@ configurations {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     deployLibrary "ar.com.synergian:wagon-git:0.2.5"
 }
 

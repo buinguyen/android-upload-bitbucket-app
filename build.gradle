@@ -14,10 +14,27 @@ buildscript {
     }
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
+
+def USERNAME = properties.getProperty('USERNAME')
+def PASSWORD = properties.getProperty('PASSWORD')
+
 allprojects {
     repositories {
         google()
         jcenter()
+
+        maven {
+            credentials {
+                username USERNAME
+                password PASSWORD
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+            url "https://api.bitbucket.org/2.0/repositories/" + COMPANY + "/" + REPOSITORY_NAME + "/src/master"
+        }
     }
 }
 
