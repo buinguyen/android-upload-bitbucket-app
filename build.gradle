@@ -1,5 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    apply from: 'libs.gradle'
+
     ext.kotlin_version = "1.4.10"
     repositories {
         google()
@@ -14,12 +16,6 @@ buildscript {
     }
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
-
-def USERNAME = properties.getProperty('USERNAME')
-def PASSWORD = properties.getProperty('PASSWORD')
-
 allprojects {
     repositories {
         google()
@@ -27,13 +23,13 @@ allprojects {
 
         maven {
             credentials {
-                username USERNAME
-                password PASSWORD
+                username libstext.USERNAME
+                password libstext.PASSWORD
             }
             authentication {
                 basic(BasicAuthentication)
             }
-            url "https://api.bitbucket.org/2.0/repositories/" + COMPANY + "/" + REPOSITORY_NAME + "/src/master"
+            url "https://api.bitbucket.org/2.0/repositories/" + libstext.COMPANY + "/" + libstext.REPOSITORY_NAME + "/src/master"
         }
     }
 }

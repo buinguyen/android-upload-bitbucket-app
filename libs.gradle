@@ -1,0 +1,8 @@
+ext.libstext = [
+        PACKAGE        : "com.test.libstext:libstext",
+        VERSION        : "1.0.4",
+        COMPANY        : "nguyenbnt_55",
+        REPOSITORY_NAME: "andlibtest-aar",
+        USERNAME       : "nguyenbnt_55",
+        PASSWORD       : "gHtVyEtMGpravv4SEhWH",
+]
